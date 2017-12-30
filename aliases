@@ -1,0 +1,2 @@
+alias icanhazip='wget -qO- ipv4.icanhazip.com'
+alias ll='ls -la'
