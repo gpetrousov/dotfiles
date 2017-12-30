@@ -1,0 +1,24 @@
+[user]
+	name = Ioannis Petrousov
+	email = petrousov@gmail.com
+
+[core]
+	# A gloabl ignore file
+	excludesfile = ~/.gitignore
+    editor = vim
+ 
+[credential]
+	# remember github passwords when cloning over https
+	helper = osxkeychain
+ 
+[branch]
+	# prefer rebase when pulling in changes
+	autosetuprebase = always
+ 
+[pull]
+	# preserve merge commits
+	rebase = preserve
+ 
+[push]
+	# push current branch to upstream branch, but refuse if remote name differs
+	default = current
