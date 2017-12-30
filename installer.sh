@@ -39,3 +39,6 @@ cp tmux ~/.tmux.conf
 
 # install git configuration to local box
 cp gitconfig ~/.gitconfig
+
+# TODO
+# install vim config
