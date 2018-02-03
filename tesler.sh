@@ -4,41 +4,58 @@
 # Ioannis Petrousov
 # petrousov@gmail.com
 
+mac_fix_home_end_buttons () {
+    # Make Home and End keys work when you connect a normal keyboard on mac
+    # https://apple.stackexchange.com/questions/18016/can-i-change-the-behavior-of-the-home-and-end-keys-on-an-apple-keyboard-with-num
 
-# 1. find which OS you are on
+    if [ ! -d ~/Library/KeyBindings/ ]
+        then
+            mkdir ~/Library/KeyBindings/
+            cat mac_keybindings.txt >> ~/Library/KeyBindings/DefaultKeyBinding.dict
+        else
+            cat mac_keybindings.txt >> ~/Library/KeyBindings/DefaultKeyBinding.dict
+    fi
+}
+
+install_packages_for_mac () {
+    for package in $(cat packages)
+    do
+        brew install "$package"
+    done
+}
+
+apply_package_configs () {
+    # install tmux plugin manager
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+    # install tmux configuration to local box
+    cp tmux ~/.tmux.conf
+
+    # install git configuration to local box
+    cp gitconfig ~/.gitconfig
+
+    # TODO
+    # install vim config
+}
+
 uname_out="$(uname -s)"
 case "${uname_out}" in
     Linux*)     current_os=Linux;;
     Darwin*)    current_os=Mac;;
     CYGWIN*)    current_os=Cygwin;;
     MINGW*)     current_os=MinGw;;
-    *)          current_os="UNKNOWN:${unameOut}"
+    *)          current_os="UNKNOWN:${uname_out}"
 esac
-#echo "You on a ${current_os}"
 
 # 2. install necessary packages
 if [ "$current_os" == "Mac" ]
 then
     echo "You are on a Mac, Good luck..."
-    for package in $(cat packages)
-    do
-        brew install "$package"
-    done
+    mac_fix_home_end_buttons
+    install_packages_for_mac
+    apply_package_configs
 fi
 
 # TODO
-# Add package installations for Centos, Ubuntu, Debian
+# Add support for Centos, Ubuntu, Debian
 
-# 3. apply configurations
-
-# install tmux plugin manager
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# install tmux configuration to local box
-cp tmux ~/.tmux.conf
-
-# install git configuration to local box
-cp gitconfig ~/.gitconfig
-
-# TODO
-# install vim config
