@@ -34,6 +34,9 @@ apply_package_configs () {
     # install git configuration to local box
     cp gitconfig ~/.gitconfig
 
+    # install irb config to local box
+    cp irbrc ~/.irbrc
+
     # TODO
     # install vim config
 }
