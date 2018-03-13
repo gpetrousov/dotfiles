@@ -41,6 +41,16 @@ apply_package_configs () {
     # install vim config
 }
 
+check_if_homebrew_is_installed {
+    if brew -v 2>/dev/null
+        then
+            echo "Homebrew is present"
+        else
+            echo "Installing homebrew"
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
+}
+
 uname_out="$(uname -s)"
 case "${uname_out}" in
     Linux*)     current_os=Linux;;
@@ -55,6 +65,7 @@ if [ "$current_os" == "Mac" ]
 then
     echo "You are on a Mac, Good luck..."
     mac_fix_home_end_buttons
+    check_if_homebrew_is_installed
     install_packages_for_mac
     apply_package_configs
 fi
