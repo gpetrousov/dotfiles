@@ -8,6 +8,11 @@ You can call this a dotfile collection.
 
 Because nobody likes to install manually.
 
+### Command Line Tools
+When they don't give you access to install xcode and commandline tools for homebrew.
+
+https://developer.apple.com/download/more/
+
 ### Name
 
 https://en.wikipedia.org/wiki/List_of_Tron_characters#Tesler
