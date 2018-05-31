@@ -10,6 +10,7 @@ Because nobody likes to install manually.
 
 ### Command Line Tools
 When they don't give you access to install xcode and commandline tools for homebrew.
+You are behing firewall or have a managed account.
 
 https://developer.apple.com/download/more/
 
